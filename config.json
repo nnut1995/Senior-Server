@@ -1,0 +1,8 @@
+{
+"GCLOUD_PROJECT": "seniorproject-server",
+"DATA_BACKEND": "datastore",
+"DATA_BACKEND": "storage"
+
+
+
+}
