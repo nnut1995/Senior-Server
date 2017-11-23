@@ -14,6 +14,19 @@ module.exports.getCurrentOrder = async function (state) {
  return deleteC(data)
 }
 
+module.exports.getCurrentOrderAdmin = async function () {
+  var data;
+  const kind = 'Order';
+  const taskKey = globalVar.datastore.key([kind]);
+  const query = globalVar.datastore.createQuery([kind])
+   await globalVar.datastore.runQuery(query)
+  .then((results) => {
+    var tasks = results[0];
+    data = results[0]
+  });
+ return deleteC(data)
+}
+
 function deleteC(data) {
   var newData = []
   for (i = 0; i < data.length; i++) {
@@ -30,6 +43,21 @@ module.exports.getHistoryOrder = async function (state) {
   const taskKey = globalVar.datastore.key([kind]);
   const query = globalVar.datastore.createQuery([kind])
   .filter('UserID', '=', state)
+  .filter('FoodStatus', '=', 'Delivered')
+   await globalVar.datastore.runQuery(query)
+  .then((results) => {
+    var tasks = results[0];
+    data = results[0]
+  });
+  console.log(data[0])
+ return data
+}
+
+module.exports.getHistoryOrderAdmin = async function () {
+  var data;
+  const kind = 'Order';
+  const taskKey = globalVar.datastore.key([kind]);
+  const query = globalVar.datastore.createQuery([kind])
   .filter('FoodStatus', '=', 'Delivered')
    await globalVar.datastore.runQuery(query)
   .then((results) => {

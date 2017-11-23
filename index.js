@@ -62,6 +62,16 @@ app.post('/getHistoryOrder', async function(req, res) {
   res.json(respond)
 })
 
+app.get('/getCurrentOrderAdmin', async function(req, res) {
+  var respond = await order.getCurrentOrderAdmin()
+  res.json(respond)
+})
+
+app.get('/getHistoryOrderAdmin', async function(req, res) {
+  var respond = await order.getHistoryOrderAdmin()
+  res.json(respond)
+})
+
 app.post('/cancleFood', async function(req, res) {
   var parse = req.body
   var respond = await order.cancleFood(parse.orderID)
